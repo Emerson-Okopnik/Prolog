@@ -1,0 +1,60 @@
+% Definição dos sintomas
+sintoma(febre).
+sintoma(dor_de_cabeca).
+sintoma(tosse).
+sintoma(cansaco).
+sintoma(dor_de_garganta).
+sintoma(dor_muscular).
+sintoma(nausea).
+sintoma(dor_no_corpo).
+
+% Regras para diagnósticos
+doenca(gripe) :-
+    febre,
+    tosse,
+    cansaco.
+
+doenca(infeccao_viral) :-
+    febre,
+    dor_de_garganta,
+    dor_muscular.
+
+doenca(enxaqueca) :-
+    dor_de_cabeca,
+    nausea.
+
+doenca(resfriado) :-
+    tosse,
+    dor_de_garganta,
+    febre.
+
+% Perguntas para identificar sintomas
+perguntar(Sintoma) :-
+    format('Você está com ~w? (s/n) ', [Sintoma]),
+    read(Resposta),
+    Resposta == s.
+
+% Regras para verificar se o sintoma existe
+febre :- perguntar(febre).
+dor_de_cabeca :- perguntar(dor_de_cabeca).
+tosse :- perguntar(tosse).
+cansaco :- perguntar(cansaco).
+dor_de_garganta :- perguntar(dor_de_garganta).
+dor_muscular :- perguntar(dor_muscular).
+nausea :- perguntar(nausea).
+dor_no_corpo :- perguntar(dor_no_corpo).
+
+% Diagnóstico baseado nos sintomas
+diagnostico :-
+    doenca(Doenca),
+    format('Possível diagnóstico: ~w.~n', [Doenca]), !.
+
+diagnostico :-
+    format('Não foi possível identificar uma condição específica. Recomenda-se consultar um médico.~n').
+
+% Inicialização do sistema
+iniciar :-
+    format('Bem-vindo ao Sistema de Diagnóstico Médico.~n'),
+    format('Por favor, responda as perguntas com "s" para sim ou "n" para não.~n'),
+    diagnostico.
+% Para iniciar o sistema, basta chamar o predicado iniciar. no console do Prolog.
