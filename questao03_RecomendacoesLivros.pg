@@ -1,29 +1,29 @@
 % Base de dados de livros
-livro('1984', ficcao, politica, 'Uma distopia que explora o controle totalitário do Estado e a manipulação da verdade.').
-livro('Sapiens', historia, ciencia, 'Uma análise da evolução da humanidade, desde os primórdios até a era moderna.').
-livro('O Senhor dos Anéis', ficcao, fantasia, 'Uma aventura épica na Terra Média para destruir o anel de poder.').
-livro('O Gene Egoísta', ciencia, biologia, 'Um estudo sobre a evolução sob a perspectiva dos genes.').
-livro('Como Fazer Amigos e Influenciar Pessoas', autoajuda, desenvolvimento_pessoal, 'Dicas e estratégias para melhorar suas relações pessoais e profissionais.').
-livro('A Breve História do Tempo', ciencia, fisica, 'Uma introdução acessível aos conceitos fundamentais da física e do universo.').
-livro('A Arte da Guerra', historia, estrategia, 'Um tratado clássico sobre estratégias militares e filosofia de guerra.').
-livro('O Código Da Vinci', ficcao, misterio, 'Um thriller que mistura arte, religião e suspense numa trama envolvente.').
-livro('Pense e Enriqueça', autoajuda, riqueza, 'Princípios para alcançar o sucesso financeiro e pessoal.').
+livro('1984', ficcao, politica, 'Uma distopia que explora o controle totalitario do Estado e a manipulacao da verdade.').
+livro('Sapiens', historia, ciencia, 'Uma analise da evolucao da humanidade, desde os primordios ate a era moderna.').
+livro('O Senhor dos Aneis', ficcao, fantasia, 'Uma aventura epica na Terra Media para destruir o anel de poder.').
+livro('O Gene Egoista', ciencia, biologia, 'Um estudo sobre a evolucao sob a perspectiva dos genes.').
+livro('Como Fazer Amigos e Influenciar Pessoas', autoajuda, desenvolvimento_pessoal, 'Dicas e estrategias para melhorar suas relacoes pessoais e profissionais.').
+livro('A Breve Historia do Tempo', ciencia, fisica, 'Uma introducao acessivel aos conceitos fundamentais da fisica e do universo.').
+livro('A Arte da Guerra', historia, estrategia, 'Um tratado classico sobre estrategias militares e filosofia de guerra.').
+livro('O Codigo Da Vinci', ficcao, misterio, 'Um thriller que mistura arte, religiao e suspense numa trama envolvente.').
+livro('Pense e Enriqueça', autoajuda, riqueza, 'Principios para alcancar o sucesso financeiro e pessoal.').
 
-% Regras de recomendação
+% Regras de recomendacao
 recomendar(Titulo, Sinopse) :-
     genero(Genero),
     interesse(Interesse),
     livro(Titulo, Genero, Interesse, Sinopse).
 
-% Interface para consulta do usuário
+% Interface para consulta do usuario
 recomendar_livros :-
-    write('Qual gênero de livros você prefere? (ficcao, ciencia, historia, autoajuda): '), nl,
+    write('Qual genero de livros voce prefere? (ficcao, ciencia, historia, autoajuda): '), nl,
     read(Genero),
     assertz(genero(Genero)),
-    write('Qual é o seu interesse específico? (Ex: politica, ciencia, fantasia, biologia, desenvolvimento_pessoal, fisica, estrategia, misterio, riqueza): '), nl,
+    write('Qual e o seu interesse especifico? (Ex: politica, ciencia, fantasia, biologia, desenvolvimento_pessoal, fisica, estrategia, misterio, riqueza): '), nl,
     read(Interesse),
     assertz(interesse(Interesse)),
-    write('Baseado nas suas preferências, recomendamos os seguintes livros:'), nl,
+    write('Baseado nas suas preferencias, recomendamos os seguintes livros:'), nl,
     listar_recomendacoes,
     retract(genero(Genero)),
     retract(interesse(Interesse)).
@@ -32,7 +32,7 @@ listar_recomendacoes :-
     recomendar(Titulo, Sinopse),
     format('~n- ~w: ~w~n', [Titulo, Sinopse]),
     fail.
-listar_recomendacoes.  % Para encerrar o loop após listar todas as recomendações.
+listar_recomendacoes.  % Para encerrar o loop apos listar todas as recomendacoes.
 
 % Exemplo de uso:
 % ?- recomendar_livros.
