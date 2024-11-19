@@ -66,7 +66,7 @@ identificar_problema :-
 % Interface do usuario
 diagnosticar :-
     limpar, % Limpa os fatos dinamicos previamente adicionados
-    write("Digite os sintomas do seu veiculo em formato de lista (ex: [motor_nao_liga, luzes_fracas]): "),
+    write("Digite os sintomas do seu veiculo em formato de lista (ex: [motor_nao_liga, luzes_fracas, barulho_ao_frear, pedal_freio_macio]): "),
     nl,
     read(SintomasUsuario), % Le os sintomas como uma lista
     assertar_sintomas(SintomasUsuario), % Processa os sintomas
