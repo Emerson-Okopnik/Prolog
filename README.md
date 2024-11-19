@@ -1,4 +1,4 @@
-# Sistema Especialista em Prolog - Trabalhos Práticos
+ Sistema Especialista em Prolog - Trabalhos Práticos
 
 # 📋 Objetivo
 
